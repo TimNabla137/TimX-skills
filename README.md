@@ -26,6 +26,24 @@ Provide task and OKR sources, the target calendar, planning dates, time zone, wo
 
 在当前项目或会话中提供待办与 OKR 来源、目标日历、规划日期、时区、工作时间及授权。Skill 指令用于指导工作流程，不会安装 Lark CLI、配置登录或创建定时自动化。
 
+## Suggested daily schedule / 建议的每日定时安排
+
+Use Cron or a scheduler that runs Codex with this project context to start two daily check-ins. Choose morning and evening times in your own time zone, and invoke `$tim-daily-planning` in each run.
+
+建议使用 Cron，或能够在项目上下文中运行 Codex 的定时工具，每天发起两次讨论。根据自己的时区设置早晚时间，每次运行都调用 `$tim-daily-planning`。
+
+**Morning planning:** Read current tasks, OKRs, and the day's calendar; discuss energy, new commitments, and the most important outcome. Assess priorities and effort, then arrange work blocks within the authorized calendar scope.
+
+**晨间安排：** 读取当前待办、OKR 和当天日历，讨论精力、临时事项及今日最重要的产出。评估优先级与耗时，再在已授权的日历范围内安排工作块。
+
+**Evening review:** Review actual progress, time spent, blockers, and remaining work. Compare estimates with actual effort and identify tomorrow's most important next step, while preserving evening rest.
+
+**晚间复盘：** 核对实际进展、耗时、卡点与剩余工作，对比预估和实际投入，并确定明日最重要的下一步，同时保留晚间休息。
+
+Configure the scheduler separately and verify its time zone, project context, skill access, Lark CLI authentication, and permissions. A scheduled run can initiate a discussion, but it cannot supply missing user answers or expand authorization. Installing the skill or reading this README does not create or enable scheduled jobs.
+
+定时任务需要单独配置，并验证时区、项目上下文、Skill 可读取性、Lark CLI 登录及权限。定时运行可以发起讨论，但不能替用户回答缺失信息或扩大操作授权。安装 Skill 或阅读本说明不会创建或启用定时任务。
+
 ## Privacy and scope / 隐私与作用域
 
 This repository contains reusable skill instructions, without personal configuration or task data. Installation alone does not authorize calendar writes. Project rules determine where the skill applies and which actions are authorized.
