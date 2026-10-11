@@ -1,0 +1,6 @@
+interface:
+  display_name: "时间与任务管理"
+  short_description: "用四象限确定优先级、预估耗时，以时间块和番茄节奏安排任务与日历"
+  default_prompt: "使用 $tim-daily-planning，读取当前 OKR、待办和目标日期日历，评估各项耗时，按番茄工作法把今天的任务安排进我的日历。"
+policy:
+  allow_implicit_invocation: true
