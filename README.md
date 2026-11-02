@@ -2,9 +2,30 @@
 
 **English** | [简体中文](README.zh-CN.md)
 
-Codex Skills built on **Lark CLI** for task assessment, time management, and calendar scheduling in Lark/Feishu.
+Reusable Codex Skills for prompt optimization, task assessment, time management, and calendar scheduling. The planning skill uses **Lark CLI** to work with Lark/Feishu.
 
 ## Available skills
+
+### tim-opt-prompt
+
+Turn a rough request into a professional, specific, verifiable prompt while preserving its original scope. First answer four questions about expert practice, primary sources, concrete methods and tools, and external evidence; then deliver a complete prompt in a copyable text block.
+
+Skill entry point: [`skills/tim-opt-prompt/SKILL.md`](skills/tim-opt-prompt/SKILL.md). Invoke it with `$tim-opt-prompt`.
+
+- **Use for:** optimizing, rewriting, or deepening an existing prompt. Ordinary task execution, light copyediting, and translation do not trigger this skill.
+- **Output:** four task-specific answers followed by a standalone rewritten prompt, in the language of the original request (Chinese by default).
+- **Boundaries:** preserve the original goal, deliverables, constraints, and authorization. Identify missing evidence and assumptions; do not invent research or validation results. Executing the rewritten task requires user authorization.
+- **Requirements:** Codex with skill support. No Lark CLI or other external tool is required for prompt rewriting itself; tools proposed for the underlying task depend on the available environment.
+
+Example invocation:
+
+```text
+Use $tim-opt-prompt to improve this request:
+"Review this onboarding flow and suggest improvements."
+Keep the scope within the existing flow; do not add features. I can provide
+screenshots, support tickets, and conversion data. First answer the four
+questions, then provide a complete prompt I can copy. Do not execute the review.
+```
 
 ### tim-daily-planning
 
@@ -14,9 +35,24 @@ Skill entry point: [`skills/tim-daily-planning/SKILL.md`](skills/tim-daily-plann
 
 ## Requirements
 
+The following Lark CLI requirements and scheduling suggestions apply to **tim-daily-planning**.
+
 Use Codex with skill support and an installed, authenticated `lark-cli`. Access personal resources as the user (`--as user`), with the permissions needed to read tasks, OKRs, and calendars. Calendar writes require the corresponding permissions and explicit user authorization. Consult the CLI help for supported commands rather than assuming command syntax.
 
 Provide task and OKR sources, the target calendar, planning dates, time zone, working hours, and authorization through the current project or conversation. The skill instructions guide the workflow; they do not install Lark CLI, configure authentication, or create scheduled automations.
+
+## Install a skill
+
+Clone this repository and copy the desired skill folder into your Codex skills directory. For example, from the repository root, install `tim-opt-prompt` for your user:
+
+```sh
+git clone https://github.com/TimNabla137/TimX-skills.git
+cd TimX-skills
+mkdir -p ~/.codex/skills
+cp -R -i skills/tim-opt-prompt ~/.codex/skills/
+```
+
+If you use a custom `CODEX_HOME`, use its `skills` directory instead. The interactive copy asks before replacing existing files. Start a new Codex session after installation, then invoke `$tim-opt-prompt` with the request you want to improve. Replace the folder name with `tim-daily-planning` to install the planning skill.
 
 ## Suggested daily schedule
 

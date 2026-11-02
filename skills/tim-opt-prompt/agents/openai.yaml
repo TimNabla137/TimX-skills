@@ -1,0 +1,4 @@
+interface:
+  display_name: "提示词优化"
+  short_description: "先从专业实践、原始材料、具体方法与外部证据四个角度分析，再重写既有提示词"
+  default_prompt: "使用 $tim-opt-prompt，先回答四个问题，再将我提供的原始要求重写成专业、具体、可验证且不扩大范围的完整提示词。"
